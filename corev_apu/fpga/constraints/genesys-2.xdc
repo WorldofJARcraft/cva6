@@ -2,11 +2,16 @@
 set_property -dict {PACKAGE_PIN R19 IOSTANDARD LVCMOS33} [get_ports cpu_resetn]
 
 ## To use FTDI FT2232 JTAG
-set_property -dict { PACKAGE_PIN Y29   IOSTANDARD LVCMOS33 } [get_ports { trst_n }];
-set_property -dict { PACKAGE_PIN AD27  IOSTANDARD LVCMOS33 } [get_ports { tck    }];
-set_property -dict { PACKAGE_PIN W27   IOSTANDARD LVCMOS33 } [get_ports { tdi    }];
-set_property -dict { PACKAGE_PIN W28   IOSTANDARD LVCMOS33 } [get_ports { tdo    }];
-set_property -dict { PACKAGE_PIN W29   IOSTANDARD LVCMOS33 } [get_ports { tms    }];
+# set_property -dict { PACKAGE_PIN Y29   IOSTANDARD LVCMOS33 } [get_ports { trst_n }];
+# set_property -dict { PACKAGE_PIN AD27  IOSTANDARD LVCMOS33 } [get_ports { tck    }];
+# set_property -dict { PACKAGE_PIN W27   IOSTANDARD LVCMOS33 } [get_ports { tdi    }];
+# set_property -dict { PACKAGE_PIN W28   IOSTANDARD LVCMOS33 } [get_ports { tdo    }];
+# set_property -dict { PACKAGE_PIN W29   IOSTANDARD LVCMOS33 } [get_ports { tms    }];
+set_property -dict { PACKAGE_PIN W22   IOSTANDARD LVCMOS33 } [get_ports { tck }]; #IO_L24N_T3_A00_D16_14 Sch=jd[4]
+set_property -dict { PACKAGE_PIN Y30   IOSTANDARD LVCMOS33 } [get_ports { tdi }]; #IO_L8P_T1_13 Sch=jd[2]
+set_property -dict { PACKAGE_PIN V24   IOSTANDARD LVCMOS33 } [get_ports { tdo }]; #IO_L23N_T3_A02_D18_14 Sch=jd[3]
+set_property -dict { PACKAGE_PIN V27   IOSTANDARD LVCMOS33 } [get_ports { tms }]; #IO_L16N_T2_A15_D31_14 Sch=jd[1]
+set_property CLOCK_DEDICATED_ROUTE FALSE [get_nets tck_IBUF]
 
 ## UART
 set_property -dict {PACKAGE_PIN Y23 IOSTANDARD LVCMOS33} [get_ports tx]

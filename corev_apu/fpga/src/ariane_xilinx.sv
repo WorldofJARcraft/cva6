@@ -45,7 +45,6 @@ module ariane_xilinx (
   output logic [ 7:0]  led         ,
   input  logic [ 7:0]  sw          ,
   output logic         fan_pwm     ,
-  input  logic         trst_n      ,
 `elsif KC705
   input  logic         sys_clk_p   ,
   input  logic         sys_clk_n   ,
@@ -313,6 +312,19 @@ rstgen i_rstgen_main (
     .rst_no       ( ndmreset_n               ),
     .init_no      (                          ) // keep open
 );
+
+
+`ifdef GENESYSII
+logic trst_n;
+rstgen i_rstgen_jtag (
+    .clk_i        ( tck                      ),
+    .rst_ni       ( pll_locked               ),
+    .test_mode_i  ( test_en                  ),
+    .rst_no       ( trst_n                   ),
+    .init_no      (                          ) // keep open
+);
+
+`endif
 
 assign rst_n = ~ddr_sync_reset;
 assign rst = ddr_sync_reset;
